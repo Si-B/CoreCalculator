@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CoreCalculator.DataObjects;
-using CoreCalculator.ServerDefinitions;
+﻿using CoreCalculator.ServerImplementations;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CoreCalculator.Controllers
 {
-    
     [Route("[controller]")]
     public class CalculusController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<ICalculus> Get(string query) {
-            if (query == "fail")
-            {
-                return new CalculusFail() { Error = true, Message = "fail"};
-            }
-            return new CalculusSuccess() { Result = 100 };
-        }
+        public IActionResult Get(string query) {
+            var inputValidationResult = new InputValidator().IsValid(query);
 
+            if (!inputValidationResult.IsValid)
+            {
+                return BadRequest(new CalculationFail() { Error = true, Message = inputValidationResult.Message });
+            }
+
+            var calculationResult = new Calculator().Calculate(query);
+
+            return Ok(calculationResult);
+        }
     }
 }

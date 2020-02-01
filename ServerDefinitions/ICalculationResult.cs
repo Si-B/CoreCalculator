@@ -1,6 +1,6 @@
 ﻿namespace CoreCalculator.ServerDefinitions
 {
-    public interface ICalculus
+    public interface ICalculationResult
     {
         bool Error { get; set; }
     }

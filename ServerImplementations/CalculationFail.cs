@@ -1,8 +1,8 @@
 ﻿using CoreCalculator.ServerDefinitions;
 
-namespace CoreCalculator.DataObjects
+namespace CoreCalculator.ServerImplementations
 {
-    public class CalculusFail : ICalculus
+    public class CalculationFail : ICalculationFail
     {
         public bool Error { get; set; }
         public string Message { get; set; }
