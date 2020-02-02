@@ -5,8 +5,17 @@ using System.Text;
 
 namespace CoreCalculator.ServerImplementations
 {
+    /// <summary>
+    /// A class that can calculate string input with valid characters (digits, +, -, * and /) and no whitespace.
+    /// There is no validation for valid characters or whitespace so please make sure to provide valid input to get valid results.
+    /// </summary>
     public class Calculator : ICalculator
-    {        
+    {
+        /// <summary>
+        /// Calculates given input by transforming it into postfix notation and evaluation.       
+        /// </summary>
+        /// <param name="input">A string that can be calculated. This means it has to only contain valid operators (digits, +, -, * or /) and no whitespace.</param>
+        /// <returns>Calculationresult as double.</returns>
         public double Calculate(string input)
         {
             var inputAsPostFixResult = ToPostFix(input);
@@ -14,7 +23,12 @@ namespace CoreCalculator.ServerImplementations
 
             return postfixEvaluationResult;
         }
-
+        /// <summary>
+        /// Given input is being transformed from infix to postfix notation.
+        /// To handle digits greater then 9 whitespace is added between every operand and operator.
+        /// </summary>
+        /// <param name="input">Any string will get transformed. There is no validation for valid characters.</param>
+        /// <returns>A string that has been transformed into postifx notation with additionael whitespace as separator.</returns>
         public string ToPostFix(string input)
         {
             var postFixBuilder = new StringBuilder();
@@ -74,8 +88,14 @@ namespace CoreCalculator.ServerImplementations
             }
 
             return postFixBuilder.ToString();
-        }        
+        }
 
+        /// <summary>
+        /// Helper function to get the mathematical precedence of a given character.
+        /// +, -, * and / are deteced currently.
+        /// </summary>
+        /// <param name="c">Any character.</param>
+        /// <returns>1 for + and -. 2 for * and /. 0 for any other character.</returns>
         private int GetPrecedence(char c) 
         {
             switch (c) {
@@ -87,6 +107,11 @@ namespace CoreCalculator.ServerImplementations
             }
         }
 
+        /// <summary>
+        /// Evaluates a postfix input with additionel whitespace as separator and returns evaluated value.
+        /// </summary>
+        /// <param name="inputAsPostifx">A postfix expression with additional whitespace between every operator and operand.</param>
+        /// <returns>A double with the result of the evaluated input.</returns>
         public double EvaluatePostFix(string inputAsPostifx)
         {
             var values = new Stack<double>();            
