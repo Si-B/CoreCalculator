@@ -1,4 +1,4 @@
-name: Build, test and publish (soon)
+name: Build, test and publish
 
 on: [push]
 
@@ -17,3 +17,9 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test with dotnet
       run: dotnet test --configuration Release
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v1
+      with: 
+        app-name: CoreCalculator # Replace with your app name
+        publish-profile: ${{ secrets.publish_profile }} # Define secret variable in repository settings as per action documentation
+        package: ${{env.DOTNET_ROOT}}/CoreCalculator20200201111735 
