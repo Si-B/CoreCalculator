@@ -22,7 +22,7 @@ All operation results are in JSON.
 
 <strong>Calculation was succesful</strong>
 
-- Example input: 5*5+(8 * 8) as NSo1Kyg4Kjgp
+- Example input: 5*5+(8 * 8) as NSo1Kyg4ICogOCk=
 
   Result: {
     "error": false,
