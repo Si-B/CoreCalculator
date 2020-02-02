@@ -2,5 +2,6 @@
 {
     public interface ICalculationSuccess : ICalculationResult
     {
+        double Result { get; set; }
     }
 }

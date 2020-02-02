@@ -7,7 +7,7 @@ namespace CoreCalculator.ServerImplementations
     {
         public string Decode(string base64Input)
         {
-            var base64InputAsBytes = System.Convert.FromBase64String(base64Input);
+            var base64InputAsBytes = Convert.FromBase64String(base64Input);
             return System.Text.Encoding.UTF8.GetString(base64InputAsBytes);
         }
 

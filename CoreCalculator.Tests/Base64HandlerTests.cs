@@ -1,7 +1,4 @@
 ﻿using CoreCalculator.ServerImplementations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace CoreCalculator.Tests
@@ -9,7 +6,7 @@ namespace CoreCalculator.Tests
     public class Base64HandlerTests
     {
         [Fact]
-        public void StringIsEncodedToBase64() {
+        public void StringIsEncodedToCorrectBase64() {
             var base64Handler = new Base64Handler();
             var input = "Base64EncodingTest";
             var expectedOutput = "QmFzZTY0RW5jb2RpbmdUZXN0";

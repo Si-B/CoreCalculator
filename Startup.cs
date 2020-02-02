@@ -33,7 +33,7 @@ namespace CoreCalculator
         {
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
@@ -41,9 +41,7 @@ namespace CoreCalculator
             app.UseRouting();
 
             app.UseAuthorization();
-
             
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

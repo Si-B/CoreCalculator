@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace CoreCalculator.ServerDefinitions
+﻿namespace CoreCalculator.ServerDefinitions
 {
     public interface ICalculator
     {
-        ICalculationResult Calculate(string input);
+        double Calculate(string input);
         string ToPostFix(string input);
-        string EvaluatePostFix(string inputAsPostifx);
+        double EvaluatePostFix(string inputAsPostifx);
     }
 }
