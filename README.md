@@ -68,7 +68,7 @@ Offers several methods to either check given input for valid encoding or charact
 
 Simple class which offers methods to encode any string to Base64 or decode a Base64 string. There is no validation so an Exception is thrown when invalid Base64 input is entered. The current implementation of CoreCalculator makes sure input can be decoded.
 
-##Thoughts for future versions
+<strong>Thoughts for future versions</strong>
 
 - Add more operators like ^.
 - Move validation calls from CalculusController.Get to InputValidator so only one call for validation is needed.
