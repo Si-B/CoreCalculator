@@ -15,5 +15,10 @@ namespace CoreCalculator.ServerImplementations
         /// Returns a message explaining why a calculation has failed.
         /// </summary>
         public string Message { get; set; }
+
+        public CalculationFail()
+        {
+            Error = true;
+        }
     }
 }
