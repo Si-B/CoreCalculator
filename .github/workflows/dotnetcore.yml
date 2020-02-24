@@ -1,4 +1,4 @@
-name: Build, test and publish (soon)
+name: Build, test and publish
 
 on: [push]
 
@@ -13,7 +13,20 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+      
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
     - name: Test with dotnet
       run: dotnet test --configuration Release
+          
+    - name: dotnet publish
+      run: |
+        dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CoreCalculator 
+    
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v1
+      with: 
+        app-name: CoreCalculator 
+        publish-profile: ${{ secrets.publish_profile }}
+        package: ${{env.DOTNET_ROOT}}/CoreCalculator
